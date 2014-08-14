@@ -1,6 +1,6 @@
 Yeoman Generator
 ================
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependencies][dependencies-image]][dependencies-url] [![Github Issues][github-issues-image]][github-issues-url]
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependencies][dependencies-image]][dependencies-url]
 
 > [Yeoman](http://yeoman.io) generator
 
@@ -42,6 +42,35 @@ $ yo flow-io
 Yeoman has a heart of gold. He's a person with feelings and opinions, but he's very easy to work with. If you think he's too opinionated, he can be easily convinced.
 
 If you'd like to get to know Yeoman better and meet some of his friends, [Grunt](http://gruntjs.com) and [Bower](http://bower.io), check out the complete [Getting Started Guide](https://github.com/yeoman/yeoman/wiki/Getting-Started).
+
+
+
+## Tests
+
+### Unit
+
+Unit tests use the [Mocha](http://visionmedia.github.io/mocha) test framework with [Chai](http://chaijs.com) assertions. To run the tests, execute the following command in the top-level application directory:
+
+``` bash
+$ make test
+```
+
+All new feature development should have corresponding unit tests to validate correct functionality.
+
+
+### Test Coverage
+
+This repository uses [Istanbul](https://github.com/gotwarlost/istanbul) as its code coverage tool. To generate a test coverage report, execute the following command in the top-level application directory:
+
+``` bash
+$ make test-cov
+```
+
+Istanbul creates a `./reports/coverage` directory. To access an HTML version of the report,
+
+``` bash
+$ open reports/coverage/lcov-report/index.html
+```
 
 
 ## License
