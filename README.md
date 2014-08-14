@@ -35,7 +35,7 @@ The generator will provide a series of prompts asking for your `name`, `email`, 
 
 ## Notes
 
-By default, the generator generates a [Travis-CI](https://travis-ci.org/) `*.yml` for continuous integration and uses [Coveralls](https://coveralls.io/) for tracking code coverage over time.
+By default, the generator generates a [Travis-CI](https://travis-ci.org/) `*.yml` file for continuous integration and uses [Coveralls](https://coveralls.io/) for tracking code coverage over time.
 
 
 ## Tests
