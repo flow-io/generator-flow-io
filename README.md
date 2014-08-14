@@ -71,6 +71,14 @@ $ open reports/coverage/lcov-report/index.html
 [MIT license](http://opensource.org/licenses/MIT).
 
 
+---
+## Copyright
+
+Copyright &copy; 2014. Athan Reines.
+
+
+
+
 [npm-image]: http://img.shields.io/npm/v/generator-flow-io.svg
 [npm-url]: https://npmjs.org/package/generator-flow-io
 
