@@ -4,4 +4,6 @@ node_js:
 before_install:
   - currentfolder=${PWD##*/}
   - if [ "$currentfolder" != 'generator-flow-io' ]; then cd .. && eval "mv $currentfolder generator-flow-io" && cd generator-flow-io; fi
+after_script:
+  - npm run coveralls
 
