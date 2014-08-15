@@ -1,4 +1,4 @@
-flow-<%= name %>
+<%= name %>
 ===
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependencies][dependencies-image]][dependencies-url] [![Github Issues][github-issues-image]][github-issues-url]
 
@@ -8,7 +8,7 @@ flow-<%= name %>
 ## Installation
 
 ``` bash
-$ npm install flow-<%= name %>
+$ npm install <%= name %>
 ```
 
 For use in the browser, use [browserify](https://github.com/substack/node-browserify).
@@ -19,7 +19,7 @@ For use in the browser, use [browserify](https://github.com/substack/node-browse
 To create a stream factory,
 
 ``` javascript
-var flowFactory = require( 'flow-<%= name %>' );
+var flowFactory = require( '<%= name %>' );
 
 // Create a new factory:
 var flowStream = flowFactory();
@@ -50,7 +50,7 @@ flowFactory()
 
 ``` javascript
 var eventStream = require( 'event-stream' ),
-	flowFactory = require( 'flow-<%= name %>' );
+	flowFactory = require( '<%= name %>' );
 
 // Create some data...
 var data = new Array( 1000 );
@@ -119,20 +119,20 @@ $ open reports/coverage/lcov-report/index.html
 Copyright &copy; <%= year %>. <%= author %>.
 
 
-[npm-image]: http://img.shields.io/npm/v/flow-<%= name %>.svg
-[npm-url]: https://npmjs.org/package/flow-<%= name %>
+[npm-image]: http://img.shields.io/npm/v/<%= name %>.svg
+[npm-url]: https://npmjs.org/package/<%= name %>
 
-[travis-image]: http://img.shields.io/travis/flow-io/flow-<%= name %>/master.svg
-[travis-url]: https://travis-ci.org/flow-io/flow-<%= name %>
+[travis-image]: http://img.shields.io/travis/flow-io/<%= name %>/master.svg
+[travis-url]: https://travis-ci.org/flow-io/<%= name %>
 
-[coveralls-image]: https://img.shields.io/coveralls/flow-io/flow-<%= name %>/master.svg
-[coveralls-url]: https://coveralls.io/r/flow-io/flow-<%= name %>?branch=master
+[coveralls-image]: https://img.shields.io/coveralls/flow-io/<%= name %>/master.svg
+[coveralls-url]: https://coveralls.io/r/flow-io/<%= name %>?branch=master
 
-[dependencies-image]: http://img.shields.io/david/flow-io/flow-<%= name %>.svg
-[dependencies-url]: https://david-dm.org/flow-io/flow-<%= name %>
+[dependencies-image]: http://img.shields.io/david/flow-io/<%= name %>.svg
+[dependencies-url]: https://david-dm.org/flow-io/<%= name %>
 
-[dev-dependencies-image]: http://img.shields.io/david/dev/flow-io/flow-<%= name %>.svg
-[dev-dependencies-url]: https://david-dm.org/dev/flow-io/flow-<%= name %>
+[dev-dependencies-image]: http://img.shields.io/david/dev/flow-io/<%= name %>.svg
+[dev-dependencies-url]: https://david-dm.org/dev/flow-io/<%= name %>
 
-[github-issues-image]: http://img.shields.io/github/issues/flow-io/flow-<%= name %>.svg
-[github-issues-url]: https://github.com/flow-io/flow-<%= name %>/issues
+[github-issues-image]: http://img.shields.io/github/issues/flow-io/<%= name %>.svg
+[github-issues-url]: https://github.com/flow-io/<%= name %>/issues

@@ -16,7 +16,7 @@ var expect = chai.expect,
 
 // TESTS //
 
-describe( 'flow-<%= name %>', function tests() {
+describe( '<%= name %>', function tests() {
 	'use strict';
 
 	it( 'should export a factory function', function test() {

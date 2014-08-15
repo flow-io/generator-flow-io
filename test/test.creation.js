@@ -43,7 +43,7 @@ describe( 'flow-io generator', function tests() {
 			];
 
 		helpers.mockPrompt( this.app, {
-			'moduleName': 'generator-test',
+			'name': 'flow-generator-test',
 			'author': 'Jane Doe',
 			'email': 'jane@doe.com',
 			'license_holder': 'Jane Doe &lt;jane@doe.com&gt;',

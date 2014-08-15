@@ -5,10 +5,10 @@
 
 	// MODULES //
 
-	var util = require( 'util' ),
-		path = require( 'path' ),
+	var path = require( 'path' ),
 		yeoman = require( 'yeoman-generator' ),
 		yosay = require( 'yosay' ),
+		npmName = require( 'npm-name' ),
 		chalk = require( 'chalk' );
 
 
@@ -17,21 +17,53 @@
 	var Generator = yeoman.generators.Base.extend({
 
 		/**
+		* METHOD: init()
+		*	Generator initialization.
+		*/
+		init: function() {
+			this.pkg = require( '../package.json' );
+			this.year = (new Date() ).getFullYear();
+			this.log( yosay( 'Welcome to the flow.io generator...' ) );
+		},
+
+		/**
 		* METHOD: promptUser()
 		*	Prompts a user for input relevant to flow module.
 		*/
 		promptUser: function() {
-			var next = this.async(), prompts;
+			var next = this.async(),
+				regex = /^flow\-/,
+				dirname,
+				prompts;
 
-			// Have Yeoman greet the user:
-			this.log( yosay( 'Welcome to the flow.io generator...' ) );
+			// Get the current directory name:
+			dirname = path.basename( process.cwd() );
+
+			// Get the user:
+			this.log( yosay( 'The module name should follow the convention `flow-{name}`, where `name` is a unique ID not already in use on NPM or within the flow.io organization on Github.' ) );
 
 			// Specify the input prompts required in order to tailor the module...
 			prompts = [
 				{
 					'type': 'input',
-					'name': 'moduleName',
-					'message': 'What is your module\'s name? flow-'
+					'name': 'name',
+					'message': 'What is the module name?',
+					'default': dirname,
+					validate: function ( answer ) {
+						var next = this.async();
+						
+						if ( !regex.test( answer ) ) {
+							next( 'The provided name is not prefixed with `flow-`.' );
+						}
+						npmName( answer, function onResponse( error, available ) {
+							if ( !available ) {
+								// Ask for another name:
+								next( 'The requested module name already exists on NPM.' );
+								return;
+							}
+							next( true );
+						});
+					}
 				},
 				{
 					'type': 'input',
@@ -41,7 +73,7 @@
 				{
 					'type': 'input',
 					'name': 'email',
-					'message': 'What is your e-mail?'
+					'message': 'Primary author\'s e-mail?'
 				},
 				{
 					'type': 'input',
@@ -51,17 +83,18 @@
 				{
 					'type': 'input',
 					'name': 'description',
-					'message': 'Module description:'
+					'message': 'Module description:',
+					'default': 'Stream factory.'
 				}
 			];
 
 			// Prompt the user for responses:
-			this.prompt( prompts, function onInput( input ) {
-				this.author = input.author;
-				this.email = input.email;
-				this.license_holder = input.license_holder;
-				this.moduleName = input.moduleName;
-				this.description = input.description;
+			this.prompt( prompts, function onAnswers( answers ) {
+				this.author = answers.author;
+				this.email = answers.email;
+				this.license_holder = answers.license_holder;
+				this.moduleName = answers.name;
+				this.description = answers.description;
 
 				next();
 			}.bind( this ) );
@@ -138,7 +171,7 @@
 			var context = {
 					'name': this.moduleName,
 					'author': this.author,
-					'year': new Date().getFullYear(),
+					'year': this.year,
 					'description': this.description
 				};
 
@@ -151,11 +184,11 @@
 		*/
 		lib: function() {
 			var context = {
-					'name': this.moduleName,
+					'name': this.moduleName.split('-').slice(1).join('-'),
 					'author': this.author,
 					'email': this.email,
 					'description': this.description,
-					'year': new Date().getFullYear()
+					'year': this.year
 				};
 
 			this.template( 'lib/_index.js', 'lib/index.js', context );
@@ -189,7 +222,7 @@
 			var config = {
 					'bower': false,
 					'npm': true,
-					'skipInstall': false,
+					'skipInstall': this.options[ 'skip-install' ],
 					'skipMessage': false,
 					'callback': function onFinish() {
 						console.log( '\n...finished.\n' );
@@ -197,9 +230,7 @@
 				};
 
 			this.on( 'end', function onEnd() {
-				if ( !this.options[ 'skip-install' ] ) {
-					this.installDependencies( config );
-				}
+				this.installDependencies( config );
 			});
 		} // end METHOD install()
 

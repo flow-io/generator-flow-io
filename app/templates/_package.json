@@ -1,5 +1,5 @@
 {
-  "name": "flow-<%= name %>",
+  "name": "<%= name %>",
   "version": "0.0.0",
   "description": "<%= description %>",
   "author": {
@@ -20,7 +20,7 @@
   "main": "./lib",
   "repository": {
     "type": "git",
-    "url": "git://github.com/flow-io/flow-<%= name %>.git"
+    "url": "git://github.com/flow-io/<%= name %>.git"
   },
   "keywords": [
     "stream",
@@ -28,7 +28,7 @@
     "flow.io"
   ],
   "bugs": {
-    "url": "https://github.com/flow-io/flow-<%= name %>/issues"
+    "url": "https://github.com/flow-io/<%= name %>/issues"
   },
   "dependencies": {},
   "devDependencies": {
