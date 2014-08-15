@@ -260,7 +260,6 @@
 			shell.exec( cmd );
 			shell.exec( 'git add -A' );
 			shell.exec( 'git commit -m "[INIT]"' );
-			shell.exec( 'git status' );
 		},
 
 		/**
