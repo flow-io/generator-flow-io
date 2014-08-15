@@ -8,6 +8,7 @@
 	var path = require( 'path' ),
 		yeoman = require( 'yeoman-generator' ),
 		yosay = require( 'yosay' ),
+		shell = require( 'shelljs' ),
 		npmName = require( 'npm-name' ),
 		chalk = require( 'chalk' );
 
@@ -34,7 +35,18 @@
 			var next = this.async(),
 				regex = /^flow\-/,
 				dirname,
-				prompts;
+				prompts,
+				user,
+				email;
+
+			// Initialize defaults:
+			user = '';
+			email = '';
+
+			if ( shell.which( 'git' ) ) {
+				user = shell.exec( 'git config --get user.name', { silent: true } ).output.trim();
+				email = shell.exec( 'git config --get user.email', { silent: true } ).output.trim();
+			}
 
 			// Get the current directory name:
 			dirname = path.basename( process.cwd() );
@@ -66,6 +78,18 @@
 					}
 				},
 				{
+					'type': 'confirm',
+					'name': 'git',
+					'message': 'Create a new git repository?',
+					'default': true,
+					validate: function( answer ) {
+						if ( answer && !shell.which( 'git' ) ) {
+							return 'Unable to find git. Ensure that you have git installed.';
+						}
+						return true;
+					}
+				},
+				{
 					'type': 'input',
 					'name': 'author',
 					'message': 'Primary author\'s name?'
@@ -73,12 +97,18 @@
 				{
 					'type': 'input',
 					'name': 'email',
-					'message': 'Primary author\'s e-mail?'
+					'message': 'Primary author\'s contact e-mail?',
+					default: function( answers ) {
+						return ( answers.git ) ? email : '';
+					}
 				},
 				{
 					'type': 'input',
 					'name': 'license_holder',
-					'message': 'Author name(s) to include in the license file?'
+					'message': 'Author name(s) to include in the license file?',
+					default: function( answers ) {
+						return answers.author;
+					}
 				},
 				{
 					'type': 'input',
@@ -95,6 +125,7 @@
 				this.license_holder = answers.license_holder;
 				this.moduleName = answers.name;
 				this.description = answers.description;
+				this.git = answers.git;
 
 				next();
 			}.bind( this ) );
@@ -213,6 +244,24 @@
 		examples: function() {
 			this.copy( 'examples/_index.js', 'examples/index.js' );
 		}, // end METHOD examples()
+
+		/**
+		* METHOD: git()
+		*	Initializes and runs git.
+		*/
+		git: function() {
+			if ( !this.git ) {
+				return;
+			}
+			var cmd = 'git remote add origin https://github.com/flow-io/' + this.moduleName + '.git';
+
+			// Initialize the repository:
+			shell.exec( 'git init' );
+			shell.exec( cmd );
+			shell.exec( 'git add -A' );
+			shell.exec( 'git commit -m "[INIT]"' );
+			shell.exec( 'git status' );
+		},
 
 		/**
 		* METHOD: install()

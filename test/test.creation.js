@@ -47,7 +47,8 @@ describe( 'flow-io generator', function tests() {
 			'author': 'Jane Doe',
 			'email': 'jane@doe.com',
 			'license_holder': 'Jane Doe &lt;jane@doe.com&gt;',
-			'description': 'Flow generator test module.'
+			'description': 'Flow generator test module.',
+			'git': false
 		});
 
 		this.app.options[ 'skip-install' ] = true;
