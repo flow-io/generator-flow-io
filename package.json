@@ -32,11 +32,11 @@
     "url": "https://github.com/flow-io/generator-flow-io/issues"
   },
   "dependencies": {
-    "chalk": "~0.4.0",
+    "chalk": "^0.5.1",
     "npm-name": "^1.0.1",
     "shelljs": "^0.3.0",
-    "yeoman-generator": "~0.16.0",
-    "yosay": "^0.1.0"
+    "yeoman-generator": "^0.17.2",
+    "yosay": "^1.0.0"
   },
   "devDependencies": {
     "mocha": "1.x.x",
