@@ -36,6 +36,7 @@
 				regex = /^flow\-/,
 				dirname,
 				prompts,
+				git,
 				user,
 				email;
 
@@ -43,7 +44,10 @@
 			user = '';
 			email = '';
 
-			if ( shell.which( 'git' ) ) {
+			// Check if the user has Git:
+			git = shell.which( 'git' );
+
+			if ( git ) {
 				user = shell.exec( 'git config --get user.name', { silent: true } ).output.trim();
 				email = shell.exec( 'git config --get user.email', { silent: true } ).output.trim();
 			}
@@ -83,7 +87,7 @@
 					'message': 'Create a new git repository?',
 					'default': true,
 					validate: function( answer ) {
-						if ( answer && !shell.which( 'git' ) ) {
+						if ( answer && !git ) {
 							return 'Unable to find git. Ensure that you have git installed.';
 						}
 						return true;

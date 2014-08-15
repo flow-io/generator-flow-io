@@ -3,7 +3,12 @@
 // MODULES //
 
 var path = require( 'path' ),
-	helpers = require( 'yeoman-generator' ).test;
+	yeoman = require( 'yeoman-generator' );
+
+
+// VARIABLES //
+
+var helpers = yeoman.test;
 
 
 // TESTS //
