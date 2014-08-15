@@ -30,7 +30,7 @@ Once installed, navigate to the directory in which you want to place generated f
 $ yo flow-io
 ```
 
-The generator will provide a series of prompts and uses your answers to tailor the module files, providing a scaffold upon which you can immediately build.
+The generator will provide a series of prompts and will use your answers to tailor the module files, providing a scaffold upon which you can immediately build.
 
 ### Prompts
 
@@ -41,14 +41,14 @@ The prompts are as follows...
 
 The module name requires the convention that the module be prefixed with `flow-`. This ensures consistency with the current naming of flow.io modules.
 
-Note that the module name _should correspond_ to the Github repository name.
+Note that the module name __should correspond__ to the Github repository name.
 
-Valid names include: `flow-mean`, `flow-sink-and-stream`, `flow-mmedian`, etc. Do _not_ include spaces or special characters in the name; e.g., `flow moving @ median`. 
+Valid names include: `flow-mean`, `flow-sink-and-stream`, `flow-mmedian`, etc. Do __not__ include spaces or special characters in the name; e.g., `flow moving @ median`. 
 
 
 #### Git
 
-You have the option to initialize the module directory as a Git repository. The default option is `Y`. By either hitting `enter` or typing `y+enter` to confirm initialization will do the following:
+You have the option to initialize the module directory as a Git repository. The default option is `Y`. Typing `enter` or `y+enter` will confirm initialization and do the following:
 
 ``` bash
 $ git init
@@ -81,7 +81,7 @@ If the default option is fine, just type `enter`.
 
 #### Description
 
-Enter the module description. You are requested to follow the convention of stating the module produces a factory, similar to how other flow modules describe themselves.
+Enter the module description. You are requested to follow the convention of stating that the module produces a factory, which is similar to how other flow modules describe themselves.
 
 
 ### Scaffold
@@ -107,7 +107,7 @@ TODO.md
 
 #### Dotfiles
 
-These are standard fare. If you notice that files are either not tracking in Git or making their way onto NPM, consult `.gitignore` and `.npmignore`. The scaffold includes a `.travis.yml` file for continuous integration purposes. Visit [Travis-CI](https://travis-ci.org/) to run builds.
+These are standard fare. If you notice that files are neither tracking in Git or making their way onto NPM, consult `.gitignore` and `.npmignore`. The scaffold includes a `.travis.yml` file for continuous integration purposes. Visit [Travis-CI](https://travis-ci.org/) to setup running builds.
 
 #### Makefile
 
@@ -125,7 +125,7 @@ The default license is the [MIT license](http://opensource.org/licenses/MIT).
 
 #### Package.json
 
-The generator creates a scaffold `package.json` file, using the module name to get the Github repository urls. You will need to manually add `keywords` and any additional `dependencies`.
+The generator creates a scaffold `package.json`, using the module name to get the Github repository urls. You need to manually add `keywords` and any additional `dependencies`.
 
 
 #### Documentation
@@ -137,9 +137,9 @@ The `README.md` is a scaffold. You should add to the API, usage, and example cod
 
 #### Lib
 
-The main library file `lib/index.js` includes a skeleton constructor. The file includes a dummy private function (`foo`) and a class method (`bar`). 
+The main library file `lib/index.js` includes a skeleton constructor. The file includes a dummy private function (`foo`) and class method (`bar`). 
 
-When modifying this file, the only _requirement_ is to include a `stream()` method which returns a pipeable stream.
+When modifying this file, the only __requirement__ is to include a `stream()` method which returns a pipeable stream.
 
 
 #### Test
@@ -170,13 +170,14 @@ $ npm install {{module_name}} --save-dev
 
 ## Notes
 
-By default, the generator generates a [Travis-CI](https://travis-ci.org/) `*.yml` file for continuous integration and uses [Coveralls](https://coveralls.io/) for tracking code coverage over time.
-
 If you opted to initialize the module as a Git repository, you will need to manually push changes to Github.
 
 ``` bash
 $ git push origin master
 ```
+
+By default, the generator generates a [Travis-CI](https://travis-ci.org/) `*.yml` file for continuous integration and uses [Coveralls](https://coveralls.io/) for tracking code coverage over time.
+
 
 
 ## Tests
