@@ -2,14 +2,15 @@ TODO
 ====
 
 
-### General
+### Validation
 
-1. 	Tests
+1. 	Valid email
+2. 	Valid module name
 
 
-### README
+### Tests
 
-1. 	Include description of git init option. Requires subsequent remote push.
-2. 	
-3. 	
-4. 	
+1. 	Prompts
+
+
+
