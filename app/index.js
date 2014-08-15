@@ -65,7 +65,7 @@
 
 				next();
 			}.bind( this ) );
-		},
+		}, // end METHOD promptUser()
 
 		/**
 		* METHOD: mkdirs()
@@ -75,7 +75,7 @@
 			this.mkdir( 'examples' );
 			this.mkdir( 'lib' );
 			this.mkdir( 'test' );
-		},
+		}, // end METHOD mkdirs()
 
 		/**
 		* METHOD: dotFiles()
@@ -85,7 +85,7 @@
 			this.copy( 'gitignore', '.gitignore' );
 			this.copy( 'npmignore', '.npmignore' );
 			this.copy( 'travis.yml', '.travis.yml' );
-		},
+		}, // end METHOD dotfiles()
 
 		/**
 		* METHOD: makefile()
@@ -93,7 +93,7 @@
 		*/
 		makefile: function() {
 			this.copy( '_Makefile', 'Makefile' );
-		},
+		}, // end METHOD makefile()
 
 		/**
 		* METHOD: license()
@@ -105,7 +105,7 @@
 				};
 
 			this.template( '_LICENSE', 'LICENSE', context );
-		},
+		}, // end METHOD license()
 
 		/**
 		* METHOD: package()
@@ -120,7 +120,7 @@
 				};
 
 			this.template( '_package.json', 'package.json', context );
-		},
+		}, // end METHOD package()
 
 		/**
 		* METHOD: todo()
@@ -128,7 +128,7 @@
 		*/
 		todo: function() {
 			this.copy( '_TODO.md', 'TODO.md' );
-		},
+		}, // end METHOD todo()
 
 		/**
 		* METHOD: readme()
@@ -143,7 +143,7 @@
 				};
 
 			this.template( '_README.md', 'README.md', context );
-		},
+		}, // end METHOD readme()
 
 		/**
 		* METHOD: lib()
@@ -159,7 +159,7 @@
 				};
 
 			this.template( 'lib/_index.js', 'lib/index.js', context );
-		},
+		}, // end METHOD lib()
 
 		/**
 		* METHOD: test()
@@ -171,7 +171,7 @@
 				};
 
 			this.template( 'test/_test.js', 'test/test.js', context );
-		},
+		}, // end METHOD test()
 
 		/**
 		* METHOD: examples()
@@ -179,7 +179,30 @@
 		*/
 		examples: function() {
 			this.copy( 'examples/_index.js', 'examples/index.js' );
-		}
+		}, // end METHOD examples()
+
+		/**
+		* METHOD: install()
+		*	Installs dependencies.
+		*/
+		install: function() {
+			var config = {
+					'bower': false,
+					'npm': true,
+					'skipInstall': false,
+					'skipMessage': false,
+					'callback': function onFinish() {
+						console.log( '\n...finished.\n' );
+					}
+				};
+
+			this.on( 'end', function onEnd() {
+				if ( !this.options[ 'skip-install' ] ) {
+					this.installDependencies( config );
+				}
+			});
+		} // end METHOD install()
+
 	});
 
 
