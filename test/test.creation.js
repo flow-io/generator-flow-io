@@ -19,15 +19,28 @@ describe( 'flow-io generator', function tests() {
 	// SETUP //
 
 	beforeEach( function setup( done ) {
-		helpers.testDirectory( path.join(__dirname, 'temp' ), function onError( error ) {
-			if ( error ) {
-				return done( error );
-			}
-
-			this.app = helpers.createGenerator( 'flow-io:app', [ '../../app' ] );
-
-			done();
-		}.bind( this ) );
+		helpers
+			.run( path.join( __dirname, '../app' ) )
+			.inDir( path.join( __dirname, 'tmp' ) )
+			.withOptions({
+				'skip-install': true,
+				'skip-install-message': true,
+				'skip-message': true
+			})
+			.withPrompt({
+				'name': 'flow-generator-test',
+				'author': 'Jane Doe',
+				'email': 'jane@doe.com',
+				'license_holder': 'Jane Doe &lt;jane@doe.com&gt;',
+				'description': 'Flow generator test module.',
+				'git': false
+			})
+			.on( 'ready', function onReady( generator ) {
+				// Called before `generator.run()` is called.
+			})
+			.on( 'end', function onEnd() {
+				done();
+			});
 	});
 
 
@@ -47,20 +60,6 @@ describe( 'flow-io generator', function tests() {
 				'lib/index.js'
 			];
 
-		helpers.mockPrompt( this.app, {
-			'name': 'flow-generator-test',
-			'author': 'Jane Doe',
-			'email': 'jane@doe.com',
-			'license_holder': 'Jane Doe &lt;jane@doe.com&gt;',
-			'description': 'Flow generator test module.',
-			'git': false
-		});
-
-		this.app.options[ 'skip-install' ] = true;
-
-		this.app.run( {}, function onRun() {
-			helpers.assertFile( expected );
-			done();
-		});
+		helpers.assertFile( expected );
 	});
 });

@@ -13,6 +13,23 @@
 		chalk = require( 'chalk' );
 
 
+	// FUNCTIONS //
+
+	/**
+	* FUNCTION: git( name )
+	*	Initializes and runs git.
+	*/
+	function git( name ) {
+		var cmd = 'git remote add origin https://github.com/flow-io/' + name + '.git';
+
+		// Initialize the repository:
+		shell.exec( 'git init' );
+		shell.exec( cmd );
+		shell.exec( 'git add -A' );
+		shell.exec( 'git commit -m "[INIT]"' );
+	} // end FUNCTION git()
+
+
 	// GENERATOR //
 
 	var Generator = yeoman.generators.Base.extend({
@@ -22,9 +39,14 @@
 		*	Generator initialization.
 		*/
 		init: function() {
+			var flg = this.options[ 'skip-message' ];
+
 			this.pkg = require( '../package.json' );
 			this.year = (new Date() ).getFullYear();
-			this.log( yosay( 'Welcome to the flow.io generator...' ) );
+
+			if ( typeof flg === 'undefined' || !flg ) {
+				this.log( yosay( 'Welcome to the flow.io generator...' ) );
+			}
 		},
 
 		/**
@@ -34,11 +56,15 @@
 		promptUser: function() {
 			var next = this.async(),
 				regex = /^flow\-/,
+				flg,
 				dirname,
 				prompts,
 				git,
 				user,
 				email;
+
+			// Output flag:
+			flg = this.options[ 'skip-message' ];
 
 			// Initialize defaults:
 			user = '';
@@ -55,8 +81,10 @@
 			// Get the current directory name:
 			dirname = path.basename( process.cwd() );
 
-			// Get the user:
-			this.log( yosay( 'The module name should follow the convention `flow-{name}`, where `name` is a unique ID not already in use on NPM or within the flow.io organization on Github.' ) );
+			// Inform the user as to naming conventions:
+			if ( typeof flg === 'undefined' || !flg ) {
+				this.log( yosay( 'The module name should follow the convention `flow-{name}`, where `name` is a unique ID not already in use on NPM or within the flow.io organization on Github.' ) );
+			}
 
 			// Specify the input prompts required in order to tailor the module...
 			prompts = [
@@ -67,11 +95,15 @@
 					'default': dirname,
 					validate: function ( answer ) {
 						var next = this.async();
-						
+
 						if ( !regex.test( answer ) ) {
 							next( 'The provided name is not prefixed with `flow-`.' );
 						}
 						npmName( answer, function onResponse( error, available ) {
+							if ( error ) {
+								next( 'Unable to check availability on NPM: ' + error );
+								return;
+							}
 							if ( !available ) {
 								// Ask for another name:
 								next( 'The requested module name already exists on NPM.' );
@@ -79,7 +111,7 @@
 							}
 							next( true );
 						});
-					}.bind( this )
+					}
 				},
 				{
 					'type': 'confirm',
@@ -250,25 +282,8 @@
 		}, // end METHOD examples()
 
 		/**
-		* METHOD: git()
-		*	Initializes and runs git.
-		*/
-		git: function() {
-			if ( !this.git ) {
-				return;
-			}
-			var cmd = 'git remote add origin https://github.com/flow-io/' + this.moduleName + '.git';
-
-			// Initialize the repository:
-			shell.exec( 'git init' );
-			shell.exec( cmd );
-			shell.exec( 'git add -A' );
-			shell.exec( 'git commit -m "[INIT]"' );
-		},
-
-		/**
 		* METHOD: install()
-		*	Installs dependencies.
+		*	Initializes git and installs dependencies.
 		*/
 		install: function() {
 			var config = {
@@ -282,6 +297,11 @@
 				};
 
 			this.on( 'end', function onEnd() {
+				if ( this.git ) {
+					console.log( '\n...initializing git...\n' );
+					git();
+					console.log( '\n...initialized git.\n' );
+				}
 				this.installDependencies( config );
 			});
 		} // end METHOD install()

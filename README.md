@@ -2,7 +2,9 @@ Yeoman Generator
 ================
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependencies][dependencies-image]][dependencies-url]
 
-This module is a [Yeoman](http://yeoman.io) generator for [flow.io](https://github.com/flow-io) modules. 
+This module is a [Yeoman](http://yeoman.io) generator for [flow.io](https://github.com/flow-io) modules.
+
+NOTE: the generator build will fail, due to a [bug](https://github.com/yeoman/generator/commit/0f3195040688f9f215aa670d3fedf0d0784ab53c) fixed in the most recent Yeoman generator codebase. This generator does produce the correct output, but the tests will fail until the authors of the underlying generator code can [submit](https://github.com/yeoman/generator/issues/620) a patch to NPM.
 
 
 ## Getting Started
@@ -43,7 +45,9 @@ The module name requires the convention that the module be prefixed with `flow-`
 
 Note that the module name __should correspond__ to the Github repository name.
 
-Valid names include: `flow-mean`, `flow-sink-and-stream`, `flow-mmedian`, etc. Do __not__ include spaces or special characters in the name; e.g., `flow moving @ median`. 
+Valid names include: `flow-mean`, `flow-sink-and-stream`, `flow-mmedian`, etc. Do __not__ include spaces or special characters in the name; e.g., `flow moving @ median`.
+
+Also note that using the generator requires internet access, as module name availability is confirmed on NPM via [npm-name](https://github.com/sindresorhus/npm-name). 
 
 
 #### Git
@@ -58,6 +62,8 @@ $ git commit -m "[INIT]"
 ```
 
 The initialization process stops short of pushing the commit to the remote repository.
+
+Note: Git initialization assumes you have write access to the [flow.io](https://github.com/flow-io) organization on Github. If you are not already a member and are interested in contributing, contact one of the [owners](https://github.com/kgryte).
 
 
 #### Author
