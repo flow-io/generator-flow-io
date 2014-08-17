@@ -2,7 +2,7 @@ Yeoman Generator
 ================
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependencies][dependencies-image]][dependencies-url]
 
-This module is a [Yeoman](http://yeoman.io) generator for [flow.io](https://github.com/flow-io) modules.
+This module is a [Yeoman](http://yeoman.io) generator for [Flow.io](https://github.com/flow-io) modules.
 
 NOTE: the generator build will fail, due to a [bug](https://github.com/yeoman/generator/commit/0f3195040688f9f215aa670d3fedf0d0784ab53c) fixed in the most recent Yeoman generator codebase. This generator does produce the correct output, but the tests will fail until the authors of the underlying generator code can [submit](https://github.com/yeoman/generator/issues/620) a patch to NPM.
 
@@ -63,7 +63,7 @@ $ git commit -m "[INIT]"
 
 The initialization process stops short of pushing the commit to the remote repository.
 
-Note: Git initialization assumes you have write access to the [flow.io](https://github.com/flow-io) organization on Github. If you are not already a member and are interested in contributing, contact one of the [owners](https://github.com/kgryte).
+Note: Git initialization assumes you have write access to the [flow-io](https://github.com/flow-io) organization on Github. If you are not already a member and are interested in contributing, contact one of the [owners](https://github.com/kgryte).
 
 
 #### Author

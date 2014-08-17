@@ -45,7 +45,7 @@
 			this.year = (new Date() ).getFullYear();
 
 			if ( typeof flg === 'undefined' || !flg ) {
-				this.log( yosay( 'Welcome to the flow.io generator...' ) );
+				this.log( yosay( 'Welcome to the Flow.io generator...' ) );
 			}
 		},
 
