@@ -113,7 +113,7 @@ TODO.md
 
 #### Dotfiles
 
-These are standard fare. If you notice that files are neither tracking in Git or making their way onto NPM, consult `.gitignore` and `.npmignore`. The scaffold includes a `.travis.yml` file for continuous integration purposes. Visit [Travis-CI](https://travis-ci.org/) to setup running builds.
+These are standard fare. If you notice that files are neither tracking in Git nor making their way onto NPM, consult `.gitignore` and `.npmignore`. The scaffold includes a `.travis.yml` file for continuous integration purposes. Visit [Travis-CI](https://travis-ci.org/) to setup running builds.
 
 #### Makefile
 
@@ -131,7 +131,7 @@ The default license is the [MIT license](http://opensource.org/licenses/MIT).
 
 #### Package.json
 
-The generator creates a scaffold `package.json`, using the module name to get the Github repository urls. You need to manually add `keywords` and any additional `dependencies`.
+The generator creates a scaffold `package.json`, using the module name to generate the Github repository urls. You need to manually add `keywords` and any additional `dependencies`.
 
 
 #### Documentation
