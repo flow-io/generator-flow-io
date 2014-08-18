@@ -46,7 +46,7 @@ describe( 'flow-io generator', function tests() {
 
 	// TESTS //
 
-	it( 'creates expected files', function test( done ) {
+	it( 'creates expected files', function test() {
 		var expected = [
 				'.gitignore',
 				'.npmignore',
