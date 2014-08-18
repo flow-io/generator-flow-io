@@ -51,7 +51,7 @@
 
 		/**
 		* METHOD: promptUser()
-		*	Prompts a user for input relevant to flow module.
+		*	Prompts a user for input relevant to the flow module.
 		*/
 		promptUser: function() {
 			var next = this.async(),
@@ -201,7 +201,8 @@
 		*/
 		license: function() {
 			var context = {
-					'holder': this.license_holder
+					'holder': this.license_holder,
+					'year': this.year
 				};
 
 			this.template( '_LICENSE', 'LICENSE', context );
@@ -299,7 +300,7 @@
 			this.on( 'end', function onEnd() {
 				if ( this.git ) {
 					console.log( '\n...initializing git...\n' );
-					git();
+					git( this.moduleName );
 					console.log( '\n...initialized git.\n' );
 				}
 				this.installDependencies( config );
