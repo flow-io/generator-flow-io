@@ -4,8 +4,6 @@ Yeoman Generator
 
 This module is a [Yeoman](http://yeoman.io) generator for [Flow.io](https://github.com/flow-io) modules.
 
-NOTE: the generator build will fail, due to a [bug](https://github.com/yeoman/generator/commit/0f3195040688f9f215aa670d3fedf0d0784ab53c) fixed in the most recent Yeoman generator codebase. This generator does produce the correct output, but the tests will fail until the authors of the underlying generator code can [submit](https://github.com/yeoman/generator/issues/620) a patch to NPM.
-
 
 ## Getting Started
 
