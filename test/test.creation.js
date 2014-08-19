@@ -55,6 +55,7 @@ describe( 'flow-io generator', function tests() {
 				'TODO.md',
 				'Makefile',
 				'LICENSE',
+				'package.json',
 				'examples/index.js',
 				'test/test.js',
 				'lib/index.js'
