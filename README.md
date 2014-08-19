@@ -54,7 +54,7 @@ You have the option to initialize the module directory as a Git repository. The 
 
 ``` bash
 $ git init
-$ git remote add origin https://github.com/flow-io/{{ module_name }}.git
+$ git remote add origin https://github.com/flow-io/<module_name>.git
 $ git add -A
 $ git commit -m "[INIT]"
 ```
@@ -161,13 +161,13 @@ The `examples/index.js` file should be modified to showcase the stream factory's
 The generator will automatically run `npm install` and install any node modules used by the scaffold. If you need any additional dependencies,
 
 ``` bash
-$ npm install {{module_name}} --save
+$ npm install <module_name> --save
 ```
 
 or development dependencies (either for testing or examples)
 
 ``` bash
-$ npm install {{module_name}} --save-dev
+$ npm install <module_name> --save-dev
 ```
 
 
