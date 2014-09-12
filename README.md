@@ -2,7 +2,7 @@ Yeoman Generator
 ================
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependencies][dependencies-image]][dependencies-url]
 
-This module is a [Yeoman](http://yeoman.io) generator for [Flow.io](https://github.com/flow-io) modules.
+> A [Yeoman](http://yeoman.io) generator for [Flow.io](https://github.com/flow-io) modules.
 
 
 ## Getting Started
