@@ -14,7 +14,7 @@ $ npm install <%= name %>
 For use in the browser, use [browserify](https://github.com/substack/node-browserify).
 
 
-## API
+## Usage
 
 To create a stream factory,
 
@@ -25,25 +25,16 @@ var flowFactory = require( '<%= name %>' );
 var flowStream = flowFactory();
 ```
 
-### flowStream.stream()
+The factory has the following methods...
+
+
+#### flowStream.stream()
 
 To create a new stream,
 
 ``` javascript
 var stream = flowStream.stream();
 ```
-
-
-## Usage
-
-Methods are chainable.
-
-``` javascript
-flowFactory()
-	.stream()
-	.pipe( /* writable stream */ );
-```
-
 
 
 ## Examples

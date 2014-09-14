@@ -136,7 +136,7 @@ The generator creates a scaffold `package.json`, using the module name to genera
 
 The generator includes a `TODO.md` file. Use this file for general TODOs which are not tied to any particular file line.
 
-The `README.md` is a scaffold. You should add to the API, usage, and example code sections.
+The `README.md` is a scaffold. You should add to the usage and example code sections.
 
 
 #### Lib
