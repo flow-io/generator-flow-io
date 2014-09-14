@@ -1,6 +1,6 @@
 {
   "name": "generator-flow-io",
-  "version": "0.2.5",
+  "version": "0.3.0",
   "description": "A Yeoman generator for flow.io modules.",
   "author": {
     "name": "Athan Reines",
