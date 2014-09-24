@@ -47,26 +47,26 @@
 	} // end FUNCTION foo()
 
 
-	// STREAM //
+	// FACTORY //
 
 	/**
-	* FUNCTION: Stream()
-	*	Stream constructor.
+	* FUNCTION: Factory()
+	*	Stream factory constructor.
 	*
 	* @constructor
-	* @returns {Stream} Stream instance
+	* @returns {Factory} Factory instance
 	*/
-	function Stream() {
+	function Factory() {
 		return this;
-	} // end FUNCTION Stream()
+	} // end FUNCTION Factory()
 
 	/**
 	* METHOD: bar()
 	*	{{ bar description }}.
 	*
-	* @returns {Stream} Stream instance
+	* @returns {Factory} Factory instance
 	*/
-	Stream.prototype.bar = function() {
+	Factory.prototype.bar = function() {
 		return this;
 	}; // end METHOD bar()
 
@@ -74,17 +74,17 @@
 	* METHOD: stream()
 	*	{{ method description }}
 	*
-	* @returns {object} {{type of }} stream
+	* @returns {Stream} {{type of }} stream
 	*/
-	Stream.prototype.stream = function() {
+	Factory.prototype.stream = function() {
 		return /*stream*/;
 	}; // end METHOD stream()
 
-
+	
 	// EXPORTS //
 
-	module.exports = function createStream() {
-		return new Stream();
+	module.exports = function createFactory() {
+		return new Factory();
 	};
 
 })();
