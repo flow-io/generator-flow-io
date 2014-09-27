@@ -1,5 +1,7 @@
-var eventStream = require( 'event-stream' ),
-	flowFactory = require( './../lib' );
+var toString = require( 'flow-to-string' ),
+	newline = require( 'flow-newline' ),
+	readArray = require( 'flow-read-array' ),
+	flowStream = require( './../lib' );
 
 // Create some data...
 var data = new Array( 1000 );
@@ -8,15 +10,14 @@ for ( var i = 0; i < data.length; i++ ) {
 }
 
 // Create a readable stream:
-var readStream = eventStream.readArray( data );
+var readStream = readArray( data );
 
-// Create a new stream:
-var stream = flowFactory().stream();
+// Create a new flow stream:
+var stream = flowStream();
 
 // Pipe the data:
 readStream
 	.pipe( stream )
-	.pipe( eventStream.map( function( d, clbk ){
-		clbk( null, d.toString()+'\n' );
-	}))
+	.pipe( toString() )
+	.pipe( newline() )
 	.pipe( process.stdout );

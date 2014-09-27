@@ -29,6 +29,7 @@ describe( 'flow-io generator', function tests() {
 			})
 			.withPrompt({
 				'name': 'flow-generator-test',
+				'repo': 'generator-test',
 				'author': 'Jane Doe',
 				'email': 'jane@doe.com',
 				'license_holder': 'Jane Doe &lt;jane@doe.com&gt;',

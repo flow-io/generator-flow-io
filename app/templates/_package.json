@@ -20,7 +20,7 @@
   "main": "./lib",
   "repository": {
     "type": "git",
-    "url": "git://github.com/flow-io/<%= name %>.git"
+    "url": "git://github.com/flow-io/<%= repo %>.git"
   },
   "keywords": [
     "stream",
@@ -28,7 +28,7 @@
     "flow.io"
   ],
   "bugs": {
-    "url": "https://github.com/flow-io/<%= name %>/issues"
+    "url": "https://github.com/flow-io/<%= repo %>/issues"
   },
   "dependencies": {},
   "devDependencies": {
@@ -36,7 +36,11 @@
     "mocha": "1.x.x",
     "coveralls": "^2.11.1",
     "istanbul": "^0.3.0",
-    "event-stream": "^3.1.7"
+    "flow-read-array": "^1.0.0",
+    "flow-to-string": "^1.0.0",
+    "flow-newline": "^1.0.0",
+    "flow-mock-read": "^1.0.0",
+    "flow-mock-write": "^1.0.0"
   },
   "licenses": [
     {

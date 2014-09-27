@@ -41,8 +41,6 @@ The prompts are as follows...
 
 The module name requires the convention that the module be prefixed with `flow-`. This ensures consistency with the current naming of flow.io modules.
 
-Note that the module name __should correspond__ to the Github repository name.
-
 Valid names include: `flow-mean`, `flow-sink-and-stream`, `flow-mmedian`, etc. Do __not__ include spaces or special characters in the name; e.g., `flow moving @ median`.
 
 Also note that using the generator requires internet access, as module name availability is confirmed on NPM via [npm-name](https://github.com/sindresorhus/npm-name). 
@@ -54,7 +52,7 @@ You have the option to initialize the module directory as a Git repository. The 
 
 ``` bash
 $ git init
-$ git remote add origin https://github.com/flow-io/<module_name>.git
+$ git remote add origin https://github.com/flow-io/<repo_name>.git
 $ git add -A
 $ git commit -m "[INIT]"
 ```
@@ -62,6 +60,11 @@ $ git commit -m "[INIT]"
 The initialization process stops short of pushing the commit to the remote repository.
 
 Note: Git initialization assumes you have write access to the [flow-io](https://github.com/flow-io) organization on Github. If you are not already a member and are interested in contributing, contact one of the [owners](https://github.com/kgryte).
+
+
+#### Repository
+
+If you elected to initialize a local Git repository, you must specify the corresponding remote repository name. The default is the unique module id (e.g., `compute-mean` --> `mean` ).
 
 
 #### Author
@@ -85,7 +88,7 @@ If the default option is fine, just type `enter`.
 
 #### Description
 
-Enter the module description. You are requested to follow the convention of stating that the module produces a factory, which is similar to how other flow modules describe themselves.
+Enter the module description.
 
 
 ### Scaffold
@@ -141,9 +144,7 @@ The `README.md` is a scaffold. You should add to the usage and example code sect
 
 #### Lib
 
-The main library file `lib/index.js` includes a skeleton constructor. The file includes a dummy private function (`foo`) and class method (`bar`). 
-
-When modifying this file, the only __requirement__ is to include a `stream()` method which returns a pipeable stream.
+The main library file `lib/index.js` is stubbed.
 
 
 #### Test
@@ -153,7 +154,7 @@ The generator creates a skeleton test file. Aim for 100% test coverage.
 
 #### Examples
 
-The `examples/index.js` file should be modified to showcase the stream factory's API and should match the example provided in the `README`.
+The `examples/index.js` file should be modified to showcase the module and should match the example provided in the `README`.
 
 
 #### Node Modules

@@ -126,6 +126,21 @@
 					}
 				},
 				{
+					when: function( answers ) {
+						if ( answers.git ) {
+							return true;
+						}
+						return false;
+					},
+					'type': 'input',
+					'name': 'repo',
+					'message': 'Git repository name?',
+					default: function( answers ) {
+						var name = answers.name.replace( 'flow-', '' );
+						return name;
+					}
+				},
+				{
 					'type': 'input',
 					'name': 'author',
 					'message': 'Primary author\'s name?'
@@ -150,7 +165,7 @@
 					'type': 'input',
 					'name': 'description',
 					'message': 'Module description:',
-					'default': 'Stream factory.'
+					'default': 'Stream.'
 				}
 			];
 
@@ -160,6 +175,7 @@
 				this.email = answers.email;
 				this.license_holder = answers.license_holder;
 				this.moduleName = answers.name;
+				this.repoName = answers.repo;
 				this.description = answers.description;
 				this.git = answers.git;
 
@@ -215,6 +231,7 @@
 		package: function() {
 			var context = {
 					'name': this.moduleName,
+					'repo': this.repoName,
 					'author': this.author,
 					'email': this.email,
 					'description': this.description
@@ -237,7 +254,9 @@
 		*/
 		readme: function() {
 			var context = {
+					'title': this.moduleName.split('-').slice(1).join('-'),
 					'name': this.moduleName,
+					'repo': this.repoName,
 					'author': this.author,
 					'year': this.year,
 					'description': this.description
@@ -300,7 +319,7 @@
 			this.on( 'end', function onEnd() {
 				if ( this.git ) {
 					console.log( '\n...initializing git...\n' );
-					git( this.moduleName );
+					git( this.repoName );
 					console.log( '\n...initialized git.\n' );
 				}
 				this.installDependencies( config );

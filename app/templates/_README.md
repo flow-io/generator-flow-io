@@ -1,4 +1,4 @@
-<%= name %>
+<%= title %>
 ===
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependencies][dependencies-image]][dependencies-url]
 
@@ -16,32 +16,16 @@ For use in the browser, use [browserify](https://github.com/substack/node-browse
 
 ## Usage
 
-To create a stream factory,
 
-``` javascript
-var flowFactory = require( '<%= name %>' );
-
-// Create a new factory:
-var flowStream = flowFactory();
-```
-
-The factory has the following methods...
-
-
-#### flowStream.stream()
-
-To create a new stream,
-
-``` javascript
-var stream = flowStream.stream();
-```
 
 
 ## Examples
 
 ``` javascript
-var eventStream = require( 'event-stream' ),
-	flowFactory = require( '<%= name %>' );
+var toString = require( 'flow-to-string' ),
+	newline = require( 'flow-newline' ),
+	readArray = require( 'flow-read-array' ),
+	flowStream = require( '<%= name %>' );
 
 // Create some data...
 var data = new Array( 1000 );
@@ -50,17 +34,16 @@ for ( var i = 0; i < data.length; i++ ) {
 }
 
 // Create a readable stream:
-var readStream = eventStream.readArray( data );
+var readStream = readArray( data );
 
-// Create a new stream:
-var stream = flowFactory().stream();
+// Create a new flow stream:
+var stream = flowStream();
 
 // Pipe the data:
 readStream
 	.pipe( stream )
-	.pipe( eventStream.map( function( d, clbk ){
-		clbk( null, d.toString()+'\n' );
-	}))
+	.pipe( toString() )
+	.pipe( newline() )
 	.pipe( process.stdout );
 ```
 
@@ -113,17 +96,17 @@ Copyright &copy; <%= year %>. <%= author %>.
 [npm-image]: http://img.shields.io/npm/v/<%= name %>.svg
 [npm-url]: https://npmjs.org/package/<%= name %>
 
-[travis-image]: http://img.shields.io/travis/flow-io/<%= name %>/master.svg
-[travis-url]: https://travis-ci.org/flow-io/<%= name %>
+[travis-image]: http://img.shields.io/travis/flow-io/<%= repo %>/master.svg
+[travis-url]: https://travis-ci.org/flow-io/<%= repo %>
 
-[coveralls-image]: https://img.shields.io/coveralls/flow-io/<%= name %>/master.svg
-[coveralls-url]: https://coveralls.io/r/flow-io/<%= name %>?branch=master
+[coveralls-image]: https://img.shields.io/coveralls/flow-io/<%= repo %>/master.svg
+[coveralls-url]: https://coveralls.io/r/flow-io/<%= repo %>?branch=master
 
-[dependencies-image]: http://img.shields.io/david/flow-io/<%= name %>.svg
-[dependencies-url]: https://david-dm.org/flow-io/<%= name %>
+[dependencies-image]: http://img.shields.io/david/flow-io/<%= repo %>.svg
+[dependencies-url]: https://david-dm.org/flow-io/<%= repo %>
 
-[dev-dependencies-image]: http://img.shields.io/david/dev/flow-io/<%= name %>.svg
-[dev-dependencies-url]: https://david-dm.org/dev/flow-io/<%= name %>
+[dev-dependencies-image]: http://img.shields.io/david/dev/flow-io/<%= repo %>.svg
+[dev-dependencies-url]: https://david-dm.org/dev/flow-io/<%= repo %>
 
-[github-issues-image]: http://img.shields.io/github/issues/flow-io/<%= name %>.svg
-[github-issues-url]: https://github.com/flow-io/<%= name %>/issues
+[github-issues-image]: http://img.shields.io/github/issues/flow-io/<%= repo %>.svg
+[github-issues-url]: https://github.com/flow-io/<%= repo %>/issues
