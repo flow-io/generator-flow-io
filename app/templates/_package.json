@@ -38,7 +38,7 @@
     "istanbul": "^0.3.0",
     "flow-read-array": "^1.0.0",
     "flow-to-string": "^1.0.0",
-    "flow-newline": "^1.0.0",
+    "flow-append": "^1.0.0",
     "flow-mock-read": "^1.0.0",
     "flow-mock-write": "^1.0.0"
   },

@@ -1,5 +1,5 @@
 var toString = require( 'flow-to-string' ),
-	newline = require( 'flow-newline' ),
+	append = require( 'flow-append' ).objectMode,
 	readArray = require( 'flow-read-array' ),
 	flowStream = require( './../lib' );
 
@@ -19,5 +19,5 @@ var stream = flowStream();
 readStream
 	.pipe( stream )
 	.pipe( toString() )
-	.pipe( newline() )
+	.pipe( append( '\n' ) )
 	.pipe( process.stdout );
