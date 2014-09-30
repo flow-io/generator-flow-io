@@ -30,14 +30,16 @@
   "bugs": {
     "url": "https://github.com/flow-io/<%= repo %>/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "readable-stream": "^1.0.32"
+  },
   "devDependencies": {
     "chai": "1.x.x",
     "mocha": "1.x.x",
     "coveralls": "^2.11.1",
     "istanbul": "^0.3.0",
-    "flow-read-array": "^1.0.0",
-    "flow-to-string": "^1.0.0",
+    "flow-from-array": "^1.1.5",
+    "flow-tostring": "^1.0.0",
     "flow-append": "^1.0.0",
     "flow-mock-read": "^1.0.0",
     "flow-mock-write": "^1.0.0"

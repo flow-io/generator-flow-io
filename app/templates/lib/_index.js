@@ -31,7 +31,7 @@
 
 	// MODULES //
 
-	// var module_alias = require( 'module_name' );
+	var Readable = require( 'readable-stream' ).Readable;
 
 
 	// FUNCTIONS //
