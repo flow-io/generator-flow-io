@@ -64,7 +64,7 @@ Note: Git initialization assumes you have write access to the [flow-io](https://
 
 #### Repository
 
-If you elected to initialize a local Git repository, you must specify the corresponding remote repository name. The default is the unique module id (e.g., `compute-mean` --> `mean` ).
+If you elected to initialize a local Git repository, you must specify the corresponding remote repository name. The default is the unique module id (e.g., `flow-mean` --> `mean` ).
 
 
 #### Author
@@ -96,6 +96,7 @@ Enter the module description.
 Once you have answered all prompts, you will have the following scaffold:
 
 ```
+benchmark/
 examples/
 	- index.js
 lib/
@@ -103,14 +104,19 @@ lib/
 test/
 	- test.js
 .gitignore
+.gitattributes
 .npmignore
 .travis.yml
+.jshintrc
+.jshintignore
+.editorconfig
 LICENSE
 Makefile
 package.json
 README.md
 TODO.md
 ```
+
 
 #### Dotfiles
 
@@ -152,6 +158,12 @@ The main library file `lib/index.js` is stubbed.
 The generator creates a skeleton test file. Aim for 100% test coverage.
 
 
+#### Benchmark
+
+The generator creates an empty directory for benchmarks. Should the module warrant benchmarks, include the benchmark files in this directory.
+
+
+
 #### Examples
 
 The `examples/index.js` file should be modified to showcase the module and should match the example provided in the `README`.
@@ -189,7 +201,7 @@ By default, the generator generates a [Travis-CI](https://travis-ci.org/) `*.yml
 
 ### Unit
 
-Unit tests use the [Mocha](http://visionmedia.github.io/mocha) test framework with [Chai](http://chaijs.com) assertions. To run the tests, execute the following command in the top-level application directory:
+Unit tests use the [Mocha](http://mochajs.org) test framework with [Chai](http://chaijs.com) assertions. To run the tests, execute the following command in the top-level application directory:
 
 ``` bash
 $ make test
@@ -209,19 +221,19 @@ $ make test-cov
 Istanbul creates a `./reports/coverage` directory. To access an HTML version of the report,
 
 ``` bash
-$ open reports/coverage/lcov-report/index.html
+$ make view-cov
 ```
 
 
+
+---
 ## License
 
 [MIT license](http://opensource.org/licenses/MIT).
 
-
----
 ## Copyright
 
-Copyright &copy; 2014. Athan Reines.
+Copyright &copy; 2014-2015. Athan Reines.
 
 
 

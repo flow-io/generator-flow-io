@@ -16,6 +16,55 @@ For use in the browser, use [browserify](https://github.com/substack/node-browse
 
 ## Usage
 
+``` javascript
+var stream = require( '<%= name %>' );
+```
+
+#### stream( [options] )
+
+What does this stream do?
+
+``` javascript
+
+```
+
+To set the stream `options`,
+
+``` javascript
+var opts = {
+	
+};
+
+// TODO: demo use
+```
+
+
+
+#### stream.factory( [options] )
+
+Returns a reusable stream factory. The factory method ensures streams are configured identically by using the same set of provided `options`.
+
+``` javascript
+var opts = {
+	
+};
+
+var factory = require( '<%= name %>' ).factory( opts );
+
+// TODO: demo use
+```
+
+
+#### stream.objectMode( [options] )
+
+This method is a convenience function to create streams which always operate in `objectMode`. The method will __always__ override the `objectMode` option in `options`.
+
+``` javascript
+var stream = require( '<%= name %>' ).objectMode;
+
+// TODO: demo use
+```
+
 
 
 
@@ -58,7 +107,7 @@ $ node ./examples/index.js
 
 ### Unit
 
-Unit tests use the [Mocha](http://visionmedia.github.io/mocha) test framework with [Chai](http://chaijs.com) assertions. To run the tests, execute the following command in the top-level application directory:
+Unit tests use the [Mocha](http://mochajs.org) test framework with [Chai](http://chaijs.com) assertions. To run the tests, execute the following command in the top-level application directory:
 
 ``` bash
 $ make test
@@ -78,16 +127,16 @@ $ make test-cov
 Istanbul creates a `./reports/coverage` directory. To access an HTML version of the report,
 
 ``` bash
-$ open reports/coverage/lcov-report/index.html
+$ make view-cov
 ```
 
 
+---
 ## License
 
 [MIT license](http://opensource.org/licenses/MIT). 
 
 
----
 ## Copyright
 
 Copyright &copy; <%= year %>. <%= author %>.

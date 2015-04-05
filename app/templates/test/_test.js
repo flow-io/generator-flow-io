@@ -1,3 +1,5 @@
+/* global require, describe, it */
+'use strict';
 
 // MODULES //
 
@@ -23,7 +25,6 @@ var expect = chai.expect,
 // TESTS //
 
 describe( '<%= name %>', function tests() {
-	'use strict';
 
 	it( 'should export a function', function test() {
 		expect( stream ).to.be.a( 'function' );

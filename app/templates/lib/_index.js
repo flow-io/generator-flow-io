@@ -8,11 +8,11 @@
 *
 *
 *	NOTES:
-*		[1] 
+*		[1]
 *
 *
 *	TODO:
-*		[1] 
+*		[1]
 *
 *
 *	LICENSE:
@@ -26,27 +26,24 @@
 *
 */
 
-(function() {
-	'use strict';
+'use strict';
 
-	// MODULES //
+// MODULES //
 
-	var Readable = require( 'readable-stream' ).Readable;
-
-
-	// FUNCTIONS //
-
-	/**
-	* FUNCTION: foo()
-	*	{{ foo description }}.
-	*/
-	function foo() {
-		
-	} // end FUNCTION foo()
+var Readable = require( 'readable-stream' ).Readable;
 
 
-	// EXPORTS //
+// FUNCTIONS //
 
-	module.exports = foo;
+/**
+* FUNCTION: foo()
+*	{{ foo description }}.
+*/
+function foo() {
 
-})();
+} // end FUNCTION foo()
+
+
+// EXPORTS //
+
+module.exports = foo;

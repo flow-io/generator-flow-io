@@ -1,3 +1,5 @@
+'use strict';
+
 var toString = require( 'flow-tostring' ),
 	append = require( 'flow-append' ).objectMode,
 	fromArray = require( 'flow-from-array' ),
